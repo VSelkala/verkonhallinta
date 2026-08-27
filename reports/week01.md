@@ -1,14 +1,14 @@
 # 1. Johdanto
 
 Ympäristön tarkoituksena on harjoitella verkon hallintaa virtuaalisen yritysverkon pohjalta.
-Tärkeimpänä asiana on dokumentoida verkon tilaa ja muutoksia mahdollisimman reaaliaikaisesti.
+Tärkeimpänä asiana on dokumentoida verkon tilaa ja mahdollisia muutoksia mahdollisimman reaaliaikaisesti.
 
 ---
 
 # 2. Verkkokaavio
 
-Katso ![images/topology.png](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology.png).
-Vaihtoehtoinen kaavio (draw.io): 
+Katso: ![Containerlab oletuskaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology.png).
+Vaihtoehtoinen kaavio (draw.io): ![Draw.io-kaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology_drawio.png)
 
 ---
 
@@ -17,7 +17,7 @@ Vaihtoehtoinen kaavio (draw.io):
 | Laite | Tarkoitus |
 |---------|---------|
 | r1 | Toimii reitittimenä lähiverkon laitteille |
-| r2 | Reititin, joka yhdistää Service Bridgen ja Management Bridgen reititin 1:lle ja 3:lle |
+| r2 | Reititin, joka yhdistää kaikki palvelut ja palvelimet toimipisteisiin |
 | r3 | Toisen branchin(toimipisteen) reititin |
 | client1 | Lähiverkossa sijaitseva tietokone |
 | attacker | Hyökkääjää simuloiva toimija |
@@ -28,6 +28,10 @@ Vaihtoehtoinen kaavio (draw.io):
 | prometheus | Työkalu verkon valvontaan ja hälytyksille |
 | grafana | Työkalu verkon valvonnan analytiikkaa ja visualisointia varten |
 | zabbix | Työkalu verkon suorituskyvyn ja laadun valvontaan |
+| cadvisor | Työkalu konttien resurssien valvontaan |
+| mgmt-br | Management Bridge |
+| srv-bp | Service Bridge |
+
 
 Serverit:
 - clab-hamk-verkonhallinta-golden-db1 (Tietokantapalvelin)
@@ -55,59 +59,6 @@ Muut:
 - clab-hamk-verkonhallinta-golden-mgmt-bp (Management Bridge)
 - clab-hamk-verkonhallinta-golden-srv-bp (Service Bridge)
 
-
-
-╭───────────────────────────────────────────────┬──────────────────────────────────┬───────────┬────────────────╮
-│                      Name                     │            Kind/Image            │   State   │ IPv4/6 Address │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-ansible       │ linux                            │ running   │ 172.20.20.9    │
-│                                               │ ubuntu:24.04                     │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-attacker      │ linux                            │ running   │ 172.20.20.4    │
-│                                               │ kalilinux/kali-rolling:latest    │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-branch-client │ linux                            │ running   │ 172.20.20.8    │
-│                                               │ ubuntu:24.04                     │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-cadvisor      │ linux                            │ running   │ 172.20.20.11   │
-│                                               │ gcr.io/cadvisor/cadvisor:v0.49.1 │ (healthy) │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-client1       │ linux                            │ running   │ 172.20.20.16   │
-│                                               │ ubuntu:24.04                     │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-db1           │ linux                            │ running   │ 172.20.20.5    │
-│                                               │ ubuntu:24.04                     │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-grafana       │ linux                            │ running   │ 172.20.20.14   │
-│                                               │ grafana/grafana:latest           │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-mgmt-bp       │ linux                            │ running   │ 172.20.20.3    │
-│                                               │ alpine:latest                    │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-prometheus    │ linux                            │ running   │ 172.20.20.6    │
-│                                               │ prom/prometheus:latest           │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-r1            │ linux                            │ running   │ 172.20.20.12   │
-│                                               │ frrouting/frr:latest             │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-r2            │ linux                            │ running   │ 172.20.20.13   │
-│                                               │ frrouting/frr:latest             │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-r3            │ linux                            │ running   │ 172.20.20.15   │
-│                                               │ frrouting/frr:latest             │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-srv-bp        │ linux                            │ running   │ 172.20.20.7    │
-│                                               │ alpine:latest                    │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-syslog        │ linux                            │ running   │ 172.20.20.50   │
-│                                               │ rsyslog/syslog_appliance_alpine  │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-web1          │ linux                            │ running   │ 172.20.20.2    │
-│                                               │ ubuntu:24.04                     │           │ N/A            │
-├───────────────────────────────────────────────┼──────────────────────────────────┼───────────┼────────────────┤
-│ clab-hamk-verkonhallinta-golden-zabbix        │ linux                            │ running   │ 172.20.20.10   │
-│                                               │ zabbix/zabbix-appliance:latest   │           │ N/A            │
-╰───────────────────────────────────────────────┴──────────────────────────────────┴───────────┴────────────────╯
 
 ---
 
@@ -176,7 +127,6 @@ C>* 172.20.20.0/24 is directly connected, eth0, 01:59:17
 
 # 6. Yhteenveto
 
-Pohdi:
-
-Mitkä asiat verkon dokumentaation muodostamisessa kuluttivat eniten aikaa ja miksi?
-Miten dokumentaatio mielestäsi auttaa palvelusta vastaavaa it-asiantuntijaa työssään?
+Ympäristön käyttöönotto oli muilta osin sujuvaa, mutta yritin pitkään saada Netboxia toimimaan siinä kuitenkaan onnistumatta.
+Dokumentaation luomisessa eniten aikaa vei laitelistauksen tekeminen riittävällä tarkkuudella.
+Dokumentaation avulla on helppoa nähdä verkon kokonaiskuva laitteineen ja keskinäisine yhteyksineen.
