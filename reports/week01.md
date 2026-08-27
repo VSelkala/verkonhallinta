@@ -7,8 +7,10 @@ Tärkeimpänä asiana on dokumentoida verkon tilaa ja mahdollisia muutoksia mahd
 
 # 2. Verkkokaavio
 
-Katso: ![Containerlab oletuskaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology.png).
-Vaihtoehtoinen kaavio (draw.io): ![Draw.io-kaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology_drawio.png)
+Containerlab oletuskaavio: 
+![Containerlab oletuskaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology.png).
+Vaihtoehtoinen kaavio (draw.io): 
+![Draw.io-kaavio](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/topology_drawio.png)
 
 ---
 
@@ -81,6 +83,7 @@ Oletusnimipalvelin: 10.255.255.254
 # 5. Reitityksen analyysi
 
 **Ping-testi:**
+
 *root@client1:/# ping -c 3 10.10.30.101*
 PING 10.10.30.101 (10.10.30.101) 56(84) bytes of data.
 64 bytes from 10.10.30.101: icmp_seq=1 ttl=61 time=0.164 ms
@@ -91,6 +94,7 @@ PING 10.10.30.101 (10.10.30.101) 56(84) bytes of data.
 rtt min/avg/max/mdev = 0.061/0.102/0.164/0.044 ms
 
 **Traceroute:**
+
 *root@client1:/# traceroute -n -m 10 10.10.30.101*
 traceroute to 10.10.30.101 (10.10.30.101), 10 hops max, 60 byte packets
  1  10.10.10.1  0.388 ms  0.339 ms  0.326 ms
@@ -99,6 +103,7 @@ traceroute to 10.10.30.101 (10.10.30.101), 10 hops max, 60 byte packets
  4  10.10.30.101  0.194 ms  0.166 ms  0.144 ms
 
 **Reittitauluanalyysit:**
+
 *root@client1:/# ip route show*
 default via 10.10.10.1 dev eth1
 10.10.10.0/24 dev eth1 proto kernel scope link src 10.10.10.101
