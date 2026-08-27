@@ -6,7 +6,7 @@ Kuvaile lyhyesti ympäristön tarkoitus.
 
 # 2. Verkkokaavio
 
-Lisää laatimasi verkkokaavio.
+Katso images/topology.png.
 
 ---
 
