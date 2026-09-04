@@ -145,6 +145,7 @@ passwords.txt
 
 apikeys.txt
 tokens.txt
+.tls/
 
 # SSH keys
 id_rsa
