@@ -1,6 +1,11 @@
 # 1. Johdanto
 
-Mikä on SNMP?
+SNMP (Simple Network Management Protocol) on TCP/IP-verkkojen hallinnassa yleisesti käytettävä tietoliikenneprotokolla. SNMP:n avulla voidaan kysellä verkossa olevan laitteen tilaa tai laite voi itsenäisesti antaa hälytyksiä. SNMP määriteltiin ensimmäisen kerran vuonna 1988.
+
+SNMP-hallittu verkko koostuu kolmesta osa-alueesta:
+1. Hallinnoidut laitteet
+2. SNMP-agentti (hallinnoiduilla laitteilla oleva ohjelmisto)
+3. Hallinta-asema (NMS eli Network management station, hallintaohjelmisto)
 
 ---
 
