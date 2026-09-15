@@ -62,7 +62,7 @@ Vertaa viikon 2 SNMP-ratkaisua viikon 3 Prometheus-ratkaisuun.
 # 7. Yhteenveto
 
 1. Mitä hyötyä Prometheuksesta on verrattuna SNMP:hen?
-- Prometheus mahdollistaa monipuolisemman tavan kerätä mittareita sekä mahdollistaa selkeän visualisoinnin ja hälytykset
+- Prometheus mahdollistaa monipuolisemman tavan kerätä mittareita sekä mahdollistaa selkeän visualisoinnin ja hälytykset.
 2. Millaisia mittareita ylläpitäjän kannattaa seurata jatkuvasti?
 - Esim. CPU:n ja muistin käyttöä, levytilaa, verkkoliikennettä sekä palveluiden saatavuutta.
 3. Mitä tietoa dashboardisi tarjoaa ylläpitäjälle?
