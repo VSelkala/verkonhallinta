@@ -28,7 +28,8 @@ Prometheuksen Target Health -sivulta kävi heti ilmi, että web1-palvelimen stat
 
 # 4. Dashboard
 
-![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/prometheus_dashboard.png)
+Kuva Dashboardista:
+![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/grafana_dashboard.png)
 
 ---
 
