@@ -12,7 +12,9 @@ Node Exporterin uusin versio tätä kirjoittaessa on 1.12.1, joten latasin wget-
 
 Tämän jälkeen ajoin komennon "curl http://localhost:9100/metrics" uudessa terminal-ikkunassa ja sain vastaukseksi suuren määrän mittareita.
 
-![Kuvakaappaus]: (https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/node_exporter_metrics.png)
+![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/node_exporter_metrics.png)
+
+
 Koko vastaus mittareista tekstitiedostona: (https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/node_exporter_metrics.txt)
 
 ---
@@ -20,13 +22,13 @@ Koko vastaus mittareista tekstitiedostona: (https://github.com/VSelkala/verkonha
 # 3. Prometheus
 
 Prometheuksen Target Health -sivulta kävi heti ilmi, että web1-palvelimen status on "UP". Näin ollen yhteys toimii. Laajempaa tilannekuvaa varten tulisi Node Exporter asentaa myös muihin laitteisiin. Tämän viikon harjoitusta varten web1-palvelin on kuitenkin riittävä.
-![Kuvakaappaus]: (https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/prometheus_targets.png)
+![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/prometheus_targets.png)
 
 ---
 
 # 4. Dashboard
 
-![Kuvakaappaus]: (https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/prometheus_dashboard.png)
+![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/prometheus_dashboard.png)
 
 ---
 
@@ -38,7 +40,7 @@ Molempien testien aiheuttamat muutokset ovat selkeästi havaittavissa Dashboardi
 
 CPU-kuormitustestin vaikutus oli hyvin erilainen. Vaikka testin kesto oli 60 sekuntia, näkyy kuormitus mittareissa kuuden minuutin ajan. Kuormitus ennen testiä oli n. 2,6%. Testin alettua kuormitus nousi n. 17%:iin kuudeksi minuutiksi, jonka jälkeen kuormitus laski taas samalle lukemalle kuin ennen testiä.
 
-![Kuvakaappaus]: (https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/load-test.png)
+![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/load-test.png)
 
 ---
 
