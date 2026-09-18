@@ -1,6 +1,6 @@
 # 1. Johdanto
 
-Infrastructure as Code on nykyaikainen tapa rakentaa ympäristöjä automaatioiden avulla. IaC nopeuttaa huomattavasti suurten laitemäärien ylläpitoa ja vähentää inhimillisiä erehdyksiä. Telia Cygatella työskennellessäni tätä käytettiin oletuksena, sillä manuaalityötä haluttiin vähentää.
+Infrastructure as Code (IaC) on nykyaikainen tapa rakentaa ja ylläpitää verkkoympäristöjä automaatioiden avulla. IaC nopeuttaa huomattavasti suurten laitemäärien ylläpitoa ja vähentää inhimillisiä erehdyksiä. Telia Cygatella työskennellessäni tätä käytettiin oletuksena, sillä manuaalityötä haluttiin vähentää.
 
 ---
 
@@ -105,10 +105,11 @@ Halusin harjoitella automaatiota ja uuden playbookin tekoa, joten toteutin tiedo
 
 # 6. Vertailu
 
-Käsin vs. automaatio.
+Pienen ympäristön ylläpito käsin on yksinkertaista ja selkeää. Automaatio kuitenkin auttaa jo pienessä ympäristössä, mikäli jokin laite rikkoutuu tai muusta syystä halutaan korvata. Tällöin on helppoa tuoda uuteen laitteeseen samat asetukset, kuin edellisessä.
+Ympäristön kasvaessa automaation hyödyt korostuvat eksponentiaalisesti. Satojen laitteiden ylläpito käsin vaatii jo valtavasti aikaa ja resursseja. Automaation avulla ympäristö on kuitenkin helppoa ylläpitää, koska manuaalityön osuus vähenee huomattavasti.
 
 ---
 
 # 7. Yhteenveto
 
-Opitut asiat.
+Automaatio on oiva työkalu, mutta ei korvaa täysin käsin tekemistä. Etenkin oppimisen kannalta käsin tekeminen on ensiarvoisen tärkeää, ennen kuin voi siirtyä automatisoimaan asioita. Esim. tämän viikon tehtävissä olleita haasteita olisi ollut äärimmäisen hankalaa taklata ilman samojen asioiden oppimista manuaalisesti tekemällä. Nykyisessä tehokkuutta yli kaiken arvostavassa ajassa  automaatio on kuitenkin välttämättömyys ja erinomainen työkalu, kun sitä oppii käyttämään.
