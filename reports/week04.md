@@ -8,6 +8,7 @@ Infrastructure as Code (IaC) on nykyaikainen tapa rakentaa ja ylläpitää verkk
 
 Ympäristön rakenne:
 
+```
 @all:
   |--@ungrouped:
   |--@user_network:
@@ -55,6 +56,7 @@ Ympäristön rakenne:
   |  |--@servers:
   |  |  |--web1
   |  |  |--db1
+```
 
 Kuten nähdään, niin ryhmiä on useita ja laitteet voivat kuulua useaan eri ryhmään.
 Ryhmien käyttö mahdollistaa ympäristön hallinnan ryhmittäin sen sijaan, että samat toimenpiteet tulisi tehdä jokaiselle laitteelle erikseen.
@@ -63,15 +65,15 @@ Ryhmien käyttö mahdollistaa ympäristön hallinnan ryhmittäin sen sijaan, ett
 
 # 3. SNMP Playbook
 
-Komento "ansible-playbook -i ../inventory.ini ping.yml" suoritti tarkastuksen siitä, mitkä laitteet ovat löydettävissä:
+Ensin suoritin tarkastuksen siitä, mitkä laitteet ovat löydettävissä komennolla *"ansible-playbook -i ../inventory.ini ping.yml"*:
 
 ![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/ansible_playbook_ping.png)
 
-Tämän jälkeen tuli asentaa SNMP-agentit laitteisiin web1, db1 ja branch-client. Päivitin install-snmp.yml-tiedostoa vastaamaan annettua ohjeistusta ja ajoin sen komennolla "ansible-playbook -i ../inventory.ini install-snmp.yml". Toiminto antoi kuitenkin erroria viimeisessä vaiheessa:
+Tämän jälkeen tuli asentaa SNMP-agentit laitteisiin web1, db1 ja branch-client. Päivitin install-snmp.yml-tiedostoa vastaamaan annettua ohjeistusta ja ajoin sen komennolla *"ansible-playbook -i ../inventory.ini install-snmp.yml"*. Toiminto antoi kuitenkin erroria viimeisessä vaiheessa:
 
 ![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/snmp_playbook1.png)
 
-Vastaava ongelma oli ollut aiemmin SNMP-viikolla ja johtui siitä, että ympäristöä ajetaan WSL:n yli. Sain ongelman korjattua vaihtamalla .yml-tiedostoon "service: -> name: snmpd - enabled: yes - state: started" sijaan komennoksi "command: service snmpd start -> changed_when: false". Tämän jälkeen ajoin playbookin uudelleen ja kaikki meni ok:
+Vastaava ongelma tuli vastaan aiemmin SNMP-manuaaliasennuksissa ja johtui siitä, että ympäristöä ajetaan WSL:n yli. Sain ongelman korjattua vaihtamalla .yml-tiedostoon *"service: -> name: snmpd - enabled: yes - state: started"* sijaan komennoksi *"command: service snmpd start -> changed_when: false"*. Tämän jälkeen ajoin playbookin uudelleen ja kaikki meni ok:
 
 ![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/snmp_playbook2.png)
 
@@ -83,17 +85,16 @@ Node Exporter tuli asentaa laitteisiin web1 ja db1. Päivitin install-node-expor
 
 ![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/node_exporter_playbook.png)
 
-
 ---
 
 # 5. Järjestelmätiedot
 
-Seuraavaksi keräsin järjestelmätietoja komennolla "ansible all -i ../inventory.ini -m setup".
+Seuraavaksi keräsin järjestelmätietoja komennolla *"ansible all -i ../inventory.ini -m setup"*.
 Tuloksena oli valtava määrä dataa, jota ei ollut helppoa selata.
 
 Halusin harjoitella automaatiota ja uuden playbookin tekoa, joten toteutin tiedonkeruun automaation avulla. Asiaa aikani pohdittuani totesin, että tässä tehtävässä tarvitsen apua ChatGPT:ltä, jotta saisin halutut tiedot valmiiksi Markdown-muotoon. Avun jälkeen ajoin playbookin ja sain suoraan seuraavat tiedot:
 
-| Laite | Käyttöjärjestelmä | IP-osoite | Prosessorien määrä | Muistin määrä |
+| **Laite** | **Käyttöjärjestelmä** | **IP-osoite** | **Prosessorien määrä** | **Muistin määrä** |
 |---|---|---|---:|---:|
 | client1 | Ubuntu 24.04 | 10.10.10.101 | 6 | 15530 MB |
 | attacker | Kali 2026.3 | 10.10.10.200 | 6 | 15530 MB |
