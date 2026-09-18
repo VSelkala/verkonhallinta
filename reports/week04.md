@@ -1,6 +1,6 @@
 # 1. Johdanto
 
-Mikä on Infrastructure as Code?
+Infrastructure as Code on nykyaikainen tapa rakentaa ympäristöjä automaatioiden avulla. IaC nopeuttaa huomattavasti suurten laitemäärien ylläpitoa ja vähentää inhimillisiä erehdyksiä. Telia Cygatella työskennellessäni tätä käytettiin oletuksena, sillä manuaalityötä haluttiin vähentää.
 
 ---
 
@@ -83,14 +83,32 @@ Node Exporter tuli asentaa laitteisiin web1 ja db1. Päivitin install-node-expor
 
 ![Kuvakaappaus](https://github.com/VSelkala/verkonhallinta/blob/main/reports/images/node_exporter_playbook.png)
 
+
 ---
 
-# 5. Vertailu
+# 5. Järjestelmätiedot
+
+Seuraavaksi keräsin järjestelmätietoja komennolla "ansible all -i ../inventory.ini -m setup".
+Tuloksena oli valtava määrä dataa, jota ei ollut helppoa selata.
+
+Halusin harjoitella automaatiota ja uuden playbookin tekoa, joten toteutin tiedonkeruun automaation avulla. Asiaa aikani pohdittuani totesin, että tässä tehtävässä tarvitsen apua ChatGPT:ltä, jotta saisin halutut tiedot valmiiksi Markdown-muotoon. Avun jälkeen ajoin playbookin ja sain suoraan seuraavat tiedot:
+
+| Laite | Käyttöjärjestelmä | IP-osoite | Prosessorien määrä | Muistin määrä |
+|---|---|---|---:|---:|
+| client1 | Ubuntu 24.04 | 10.10.10.101 | 6 | 15530 MB |
+| attacker | Kali 2026.3 | 10.10.10.200 | 6 | 15530 MB |
+| web1 | Ubuntu 24.04 | 10.10.20.101 | 6 | 15530 MB |
+| db1 | Ubuntu 24.04 | 10.10.20.102 | 6 | 15530 MB |
+| branch-client | Ubuntu 24.04 | 10.10.30.101 | 6 | 15530 MB |
+
+---
+
+# 6. Vertailu
 
 Käsin vs. automaatio.
 
 ---
 
-# 6. Yhteenveto
+# 7. Yhteenveto
 
 Opitut asiat.
