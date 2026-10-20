@@ -1,6 +1,9 @@
 # 1. Johdanto
 
-Tietoturva verkonhallinnan näkökulmasta.
+Tietoturva on tärkeä osa verkonhallintaa, yhdessä valvonnan ja automaation kanssa.
+On hyvä osata tunnistaa mm. tietoturvauhat, poikkeava liikenne, virheelliset konfiguraatiot sekä väärinkäytökset.
+
+Tässä tehtävässä toteutetaan pienimuotoinen porttiskannaus mahdollisen hyökkääjän toimien tunnistamiseksi ja lokitietojen lukemisen oppimiseksi.
 
 ---
 
