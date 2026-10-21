@@ -57,6 +57,7 @@ Portti 9100 oli kuitenkin avoinna ja Node Exporterin käytössä. Tämä on tarp
 Tällä hetkellä mittarit pääsee näkemään mm. attacker-koneelta. Tämä voi antaa hyökkääjälle lisätietoa verkosta.
 
 Toisessa avoimessa portissa 22 toimiva OpenSSH 9.6p1 Ubuntu 3ubuntu13.20 vaikuttaa ajantasaiselta enkä ainakaan äkkiseltään löytänyt siitä haavoittuvuuksia.
+Todellisessa ympäristössä olisi järkevää ottaa käyttöön Zero Trust -suojausmalli, jotta vain luotetut laitteet pääsevät yrityksen verkkoon käsiksi.
 
 ---
 
